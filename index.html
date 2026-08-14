@@ -21,32 +21,33 @@
   </head>
   <body>
     <!-- ============ NAVBAR (transparent) ============ -->
-    <header class="site-header">
-      <div class="nav-inner">
-        <img
-          src="IMAGES/LOGO.png"
-          alt="Kerala Shareeath Academy Logo"
-          class="nav-logo"
-        />
+<header class="site-header">
+  <div class="nav-inner">
 
-        <nav class="site-nav" aria-label="Primary">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-          </ul>
-        </nav>
+    <a href="index.html" class="nav-logo-link">
+      <img src="IMAGES/LOGO.png" alt="Kerala Shareeath Academy Logo" class="nav-logo">
+    </a>
 
-        <button
-          class="nav-toggle"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          ☰
-        </button>
-      </div>
-    </header>
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-controls="siteNav"
+      aria-label="Toggle navigation">
+      ☰
+    </button>
+
+  </div>
+</header>
 
     <!-- ============ HERO ============ -->
     <header class="hero" id="hero">
@@ -87,7 +88,7 @@
         <h1 class="hero-title">Kerala Shareeath<br />Academy</h1>
         <p class="hero-subtitle">
           Empowering Islamic Education, Excellence and Community Service. <br>
-          Run by : <span style="color: #f0c040">Shariath Academy Trust</span>
+          Run by : <span style="color: #f0c040">Shareeath Academy Trust</span>
         </p>
       </div>
 
