@@ -558,7 +558,7 @@ html { scroll-padding-top: var(--nav-height); }
 }
 .nav-logo {
   position: absolute;
-  left: 400px;
+  left: 20%;
   top: 50%;
   transform: translateY(-50%);
   width: 58px;
