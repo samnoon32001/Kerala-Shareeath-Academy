@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kerala Shareeath Academy</title>
+    <meta
+      name="description"
+      content="Kerala Shareeath Academy — empowering Islamic education, excellence and community service."
+    />
+
+    <!-- Fonts: Poppins (display) + Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ============ NAVBAR (transparent) ============ -->
+    <header class="site-header">
+      <div class="nav-inner">
+        <img
+          src="IMAGES/LOGO.png"
+          alt="Kerala Shareeath Academy Logo"
+          class="nav-logo"
+        />
+
+        <nav class="site-nav" aria-label="Primary">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero" id="hero">
+      <!-- Slideshow layers (desktop) -->
+      <div class="hero-slides" aria-hidden="true">
+        <div
+          class="hero-slide is-active"
+          style="background-image: url(&quot;IMAGES/KSA1.jpeg&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;IMAGES/KSA2.jpeg&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;IMAGES/KSA3.jpeg&quot;)"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url(&quot;IMAGES/KSA4.jpeg&quot;)"
+        ></div>
+      </div>
+
+      <!-- Static image (mobile only, no JS needed) -->
+      <div class="hero-static" aria-hidden="true"></div>
+
+      <!-- Gradient overlay -->
+      <div class="hero-overlay"></div>
+
+      <!-- Subtle geometric ornament (signature motif) -->
+      <svg class="hero-lattice" viewBox="0 0 200 200" aria-hidden="true">
+        <use href="#khatam-pattern"></use>
+      </svg>
+
+      <!-- Content (only first landing sight) -->
+      <div class="hero-content">
+        <p class="hero-eyebrow">A TRUST FOR ISLAMIC LEARNING &amp; SERVICE</p>
+        <h1 class="hero-title">Kerala Shareeath<br />Academy</h1>
+        <p class="hero-subtitle">
+          Empowering Islamic Education, Excellence and Community Service.
+        </p>
+      </div>
+
+      <!-- CTA buttons (only two) -->
+      <nav class="hero-actions" aria-label="Primary actions">
+        <a href="gallery.html" class="btn btn-primary"
+          >Explore Our institution</a
+        >
+        <a
+          href="https://wa.me/919446958515?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85"
+          class="btn btn-secondary"
+          target="_blank"        >
+          Apply for admission
+        </a>
+      </nav>
+    </header>
+
+    <!-- Shared SVG defs for the geometric motif, reused across sections -->
+    <svg width="0" height="0" style="position: absolute">
+      <defs>
+        <pattern
+          id="khatam-pattern"
+          width="40"
+          height="40"
+          patternUnits="userSpaceOnUse"
+        >
+          <g fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 2 L38 20 L20 38 L2 20 Z" />
+            <path d="M20 10 L30 20 L20 30 L10 20 Z" />
+          </g>
+        </pattern>
+      </defs>
+    </svg>
+
+    <main>
+      <!-- Empty main — content moved to dedicated pages. -->
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
