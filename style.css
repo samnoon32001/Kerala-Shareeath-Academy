@@ -1054,3 +1054,683 @@ html { scroll-padding-top: var(--nav-height); }
     right: 12px;
   }
 }
+/* ============================================================
+   KSA INSTITUTIONS PAGE
+   ============================================================ */
+
+.page-gallery {
+  background: var(--sand);
+}
+
+
+/* ============================================================
+   PAGE INTRO
+   ============================================================ */
+
+.institutions-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.institutions-intro {
+  min-height: 38vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    calc(var(--nav-height) + 45px)
+    24px
+    55px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--forest-deep),
+      #0b5032
+    );
+
+  color: var(--white);
+
+  text-align: center;
+
+  position: relative;
+  isolation: isolate;
+}
+
+
+/* subtle gold decorative circle */
+
+.institutions-intro::before {
+  content: "";
+
+  position: absolute;
+
+  width: 320px;
+  height: 320px;
+
+  border: 1px solid rgba(201,162,39,0.22);
+  border-radius: 50%;
+
+  top: -170px;
+  right: -100px;
+
+  z-index: -1;
+}
+
+
+.institutions-intro::after {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border: 1px solid rgba(201,162,39,0.15);
+  border-radius: 50%;
+
+  bottom: -130px;
+  left: -80px;
+
+  z-index: -1;
+}
+
+
+.institutions-intro-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+
+.institution-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 14px;
+
+  font-family: var(--font-body);
+
+  font-size: 0.75rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.20em;
+
+  color: var(--gold);
+}
+
+
+.institutions-intro h1 {
+  color: var(--white);
+
+  font-size: clamp(
+    2rem,
+    5vw,
+    3.5rem
+  );
+
+  line-height: 1.15;
+
+  margin-bottom: 18px;
+}
+
+
+.institutions-intro p {
+  max-width: 650px;
+
+  margin: 0 auto;
+
+  color: rgba(255,255,255,0.82);
+
+  font-size: 1rem;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   INSTITUTION SHOWCASE
+   ============================================================ */
+
+.institution-showcase {
+  padding: 0px 24px 50px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      var(--sand),
+      #ffffff
+    );
+}
+
+
+.institution-cards {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 28px;
+
+  align-items: stretch;
+}
+
+
+/* ============================================================
+   INSTITUTION CARD
+   ============================================================ */
+
+.institution-card {
+
+  background: var(--white);
+
+  border-radius: 22px;
+
+  overflow: hidden;
+
+  border: 1px solid rgba(10,46,31,0.07);
+
+  box-shadow:
+    0 18px 45px rgba(10,46,31,0.09);
+
+  display: flex;
+
+  flex-direction: column;
+
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+.institution-card:hover {
+
+  transform: translateY(-8px);
+
+  box-shadow:
+    0 25px 55px rgba(10,46,31,0.15);
+}
+
+
+/* ============================================================
+   INSTITUTION IMAGE
+   ============================================================ */
+
+.institution-image {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 250px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0a2e1f,
+      #0b8b4b
+    );
+}
+
+
+.institution-image::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 45%,
+      rgba(0,0,0,0.45)
+    );
+
+  pointer-events: none;
+}
+
+
+.institution-image img {
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+
+  transition:
+    transform 0.6s ease;
+}
+
+
+.institution-card:hover
+.institution-image img {
+
+  transform: scale(1.06);
+}
+
+
+/* Image number */
+
+.institution-number {
+
+  position: absolute;
+
+  left: 18px;
+  bottom: 16px;
+
+  z-index: 2;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  color: var(--forest-deep);
+
+  font-family: var(--font-display);
+
+  font-weight: 800;
+
+  font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   CARD CONTENT
+   ============================================================ */
+
+.institution-content {
+
+  padding: 30px 26px 28px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  flex: 1;
+}
+
+
+.institution-label {
+
+  display: block;
+
+  margin-bottom: 10px;
+
+  color: var(--brand-green-d);
+
+  font-size: 0.68rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+
+.institution-content h2 {
+
+  font-size: 1.35rem;
+
+  line-height: 1.3;
+
+  margin-bottom: 14px;
+
+  color: var(--forest-deep);
+}
+
+
+.institution-content p {
+
+  color: var(--ink-soft);
+
+  font-size: 0.93rem;
+
+  line-height: 1.75;
+
+  margin-bottom: 24px;
+
+  flex: 1;
+}
+
+
+/* ============================================================
+   KNOW MORE BUTTON
+   ============================================================ */
+
+.institution-btn {
+
+  align-self: flex-start;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 11px 18px;
+
+  border-radius: 999px;
+
+  background: var(--brand-green);
+
+  color: var(--white);
+
+  font-size: 0.88rem;
+
+  font-weight: 600;
+
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+.institution-btn span {
+
+  font-size: 1.1rem;
+
+  line-height: 1;
+
+  transition:
+    transform var(--transition-fast);
+}
+
+
+.institution-btn:hover {
+
+  background: var(--brand-green-d);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(11,139,75,0.25);
+}
+
+
+.institution-btn:hover span {
+
+  transform: translateX(4px);
+}
+
+
+/* ============================================================
+   BOTTOM MESSAGE
+   ============================================================ */
+
+.institution-footer {
+
+  background: var(--forest-deep);
+
+  color: var(--white);
+
+  text-align: center;
+
+  padding: 70px 24px;
+}
+
+
+.institution-footer > div {
+
+  max-width: 700px;
+
+  margin: 0 auto;
+}
+
+
+.institution-footer h2 {
+
+  color: var(--white);
+
+  font-size: clamp(
+    1.7rem,
+    4vw,
+    2.5rem
+  );
+
+  line-height: 1.2;
+
+  margin-bottom: 16px;
+}
+
+
+.institution-footer p {
+
+  color: rgba(255,255,255,0.75);
+
+  max-width: 620px;
+
+  margin: 0 auto;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .institutions-intro {
+
+    min-height: 35vh;
+
+    padding:
+      calc(var(--nav-height) + 40px)
+      24px
+      50px;
+  }
+
+
+  .institution-showcase {
+
+    padding:
+      55px 22px
+      70px;
+  }
+
+
+  .institution-cards {
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 22px;
+  }
+
+
+  .institution-card:last-child {
+
+    grid-column:
+      1 / -1;
+
+    max-width: 500px;
+
+    width: 100%;
+
+    margin: 0 auto;
+  }
+
+
+  .institution-image {
+
+    height: 230px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .institutions-intro {
+
+    min-height: auto;
+
+    padding:
+      105px 22px
+      55px;
+  }
+
+
+  .institutions-intro h1 {
+
+    font-size: 2rem;
+
+    line-height: 1.15;
+  }
+
+
+  .institutions-intro p {
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+  }
+
+
+  .institution-showcase {
+
+    padding:
+      40px 18px
+      55px;
+  }
+
+
+  .institution-cards {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+  }
+
+
+  .institution-card {
+
+    width: 100%;
+
+    border-radius: 18px;
+  }
+
+
+  .institution-card:last-child {
+
+    max-width: none;
+
+    margin: 0;
+  }
+
+
+  .institution-image {
+
+    height: 220px;
+  }
+
+
+  .institution-content {
+
+    padding: 25px 22px 24px;
+  }
+
+
+  .institution-content h2 {
+
+    font-size: 1.25rem;
+  }
+
+
+  .institution-content p {
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+  }
+
+
+  .institution-btn {
+
+    width: 100%;
+
+    justify-content: center;
+
+    padding: 12px 18px;
+  }
+
+
+  .institution-footer {
+
+    padding:
+      55px 22px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 400px) {
+
+  .institutions-intro {
+
+    padding:
+      95px 18px
+      45px;
+  }
+
+
+  .institutions-intro h1 {
+
+    font-size: 1.8rem;
+  }
+
+
+  .institution-showcase {
+
+    padding:
+      30px 14px
+      45px;
+  }
+
+
+  .institution-image {
+
+    height: 200px;
+  }
+
+
+  .institution-content {
+
+    padding:
+      22px 19px;
+  }
+
+
+  .institution-content h2 {
+
+    font-size: 1.15rem;
+  }
+}

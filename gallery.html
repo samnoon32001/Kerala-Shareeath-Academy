@@ -2,63 +2,256 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gallery — Kerala Shareeath Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Institutions — Kerala Shareeath Academy</title>
+
+  <meta
+    name="description"
+    content="Explore the educational institutions of Kerala Shareeath Academy."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="page-gallery">
 
+<!-- =========================================================
+     NAVBAR
+     ========================================================= -->
+
 <header class="site-header site-header--sub">
+
   <div class="nav-inner">
-    <nav class="site-nav" aria-label="Primary">
+
+    <a href="index.html" class="nav-logo-link">
+      <img
+        src="IMAGES/LOGO.png"
+        alt="Kerala Shareeath Academy Logo"
+        class="nav-logo"
+      >
+    </a>
+
+    <nav class="site-nav" id="siteNav" aria-label="Primary">
+
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html" aria-current="page">Gallery</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+
+        <li>
+          <a href="gallery.html" aria-current="page">Institutions</a>
+        </li>
+
+        <li>
+          <a href="about.html">About Us</a>
+        </li>
+
+        <li>
+          <a href="contact.html">Contact Us</a>
+        </li>
+
       </ul>
+
     </nav>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle navigation">☰</button>
+
+    <button
+      class="nav-toggle"
+      id="navToggle"
+      aria-expanded="false"
+      aria-controls="siteNav"
+      aria-label="Toggle navigation"
+    >
+      ☰
+    </button>
+
   </div>
+
 </header>
 
-<main class="container">
-  <section class="section-head">
-    <span class="eyebrow eyebrow--dark">GALLERY</span>
-    <h2>Explore our campus, classrooms and community moments.</h2>
-    <p class="lead">A visual story of Kerala Shareeath Academy’s learning spaces, events, and community life.</p>
+
+<!-- =========================================================
+     INSTITUTIONS PAGE
+     ========================================================= -->
+
+<main class="institutions-page">
+
+  <!-- =======================================================
+       THREE INSTITUTIONS
+       ======================================================= -->
+
+  <section class="institution-showcase">
+
+    <div class="institution-cards">
+
+
+      <!-- =================================================
+           01 — INSEED ROOT SCHOOL
+           ================================================= -->
+
+      <article class="institution-card">
+
+        <div class="institution-image">
+
+          <!-- IMAGE PLACEHOLDER -->
+          <img
+            src="IMAGES/INSEED-ROOT-SCHOOL.jpeg"
+            alt="Inseed Root School"
+          >
+
+          <span class="institution-number">
+            01
+          </span>
+
+        </div>
+
+        <div class="institution-content">
+
+          <span class="institution-label">
+            SCHOOL EDUCATION
+          </span>
+
+          <h2>
+            Inseed Root School
+          </h2>
+
+          <p>
+            A nurturing foundation for young learners, combining
+            quality education, strong values and a positive learning
+            environment to help children grow with confidence,
+            curiosity and character.
+          </p>
+
+          <a
+            href="#"
+            class="institution-btn"
+          >
+            Know More
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           02 — MAIDATH-UL QURAN HIFZ COLLEGE
+           ================================================= -->
+
+      <article class="institution-card institution-card-reverse">
+
+        <div class="institution-image">
+
+          <!-- IMAGE PLACEHOLDER -->
+          <img
+            src="IMAGES/MAIDATH-UL-QURAN.jpeg"
+            alt="Maidath-ul Quran Hifz College"
+          >
+
+          <span class="institution-number">
+            02
+          </span>
+
+        </div>
+
+        <div class="institution-content">
+
+          <span class="institution-label">
+            QURANIC EDUCATION
+          </span>
+
+          <h2>
+            Maidath-ul Quran Hifz College
+          </h2>
+
+          <p>
+            A dedicated centre for Qur'an memorisation and Islamic
+            learning, helping students develop a strong connection
+            with the Qur'an while building discipline, understanding
+            and spiritual character.
+          </p>
+
+          <a
+            href="#"
+            class="institution-btn"
+          >
+            Know More
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- =================================================
+           03 — KSA MAHDIYYA COLLEGE
+           ================================================= -->
+
+      <article class="institution-card">
+
+        <div class="institution-image">
+
+          <!-- IMAGE PLACEHOLDER -->
+          <img
+            src="IMAGES/KSA-MAHDIYYA.jpeg"
+            alt="KSA Mahdiyya College"
+          >
+
+          <span class="institution-number">
+            03
+          </span>
+
+        </div>
+
+        <div class="institution-content">
+
+          <span class="institution-label">
+            HIGHER ISLAMIC EDUCATION
+          </span>
+
+          <h2>
+            KSA Mahdiyya College
+          </h2>
+
+          <p>
+            An institution focused on advanced Islamic learning,
+            scholarship and personal development, preparing students
+            to carry knowledge, ethics and service into the wider
+            community.
+          </p>
+
+          <a
+            href="#"
+            class="institution-btn"
+          >
+            Know More
+            <span>→</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+    </div>
+
   </section>
 
-  <section class="page-section">
-    <div class="gallery-grid">
-      <img src="IMAGES/KSA1.jpeg" alt="Campus view">
-      <img src="IMAGES/KSA2.jpeg" alt="Students in class">
-      <img src="IMAGES/KSA3.jpeg" alt="Community event">
-      <img src="IMAGES/KSA4.jpeg" alt="Library">
-      <img src="IMAGES/KSA1.jpeg" alt="Discussion session">
-      <img src="IMAGES/KSA2.jpeg" alt="Campus gardens">
-    </div>
-  </section>
-
-  <section class="page-section">
-    <div class="feature-grid">
-      <div class="card">
-        <h3>Campus life</h3>
-        <p>Experience the warm campus atmosphere with prayer halls, study areas, and peaceful gardens designed for focused learning.</p>
-      </div>
-      <div class="card">
-        <h3>Classroom excellence</h3>
-        <p>Modern classrooms and mentorship spaces support both Islamic scholarship and contemporary academic success.</p>
-      </div>
-      <div class="card">
-        <h3>Community events</h3>
-        <p>From seminars to cultural programs, our gallery captures the energy of community learning and celebration.</p>
-      </div>
-    </div>
-  </section>
 </main>
 
 
 <script src="script.js"></script>
+
 </body>
 </html>
