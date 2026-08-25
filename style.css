@@ -1248,13 +1248,18 @@ html { scroll-padding-top: var(--nav-height); }
 }
 
 
-.institution-card:hover {
+@media (min-width: 1025px) {
 
-  transform: translateY(-8px);
+  .institution-card:not(.is-expanded):hover {
 
-  box-shadow:
-    0 25px 55px rgba(10,46,31,0.15);
+    transform: translateY(-8px);
+
+    box-shadow:
+      0 25px 55px rgba(10,46,31,0.13);
+  }
+
 }
+
 
 
 /* ============================================================
@@ -1313,7 +1318,17 @@ html { scroll-padding-top: var(--nav-height); }
 }
 
 
-.institution-card:hover
+@media (min-width: 1025px) {
+
+  .institution-card:not(.is-expanded):hover {
+    transform: translateY(-8px);
+
+    box-shadow:
+      0 25px 55px rgba(10,46,31,0.13);
+  }
+
+}
+
 .institution-image img {
 
   transform: scale(1.06);
@@ -1522,6 +1537,24 @@ html { scroll-padding-top: var(--nav-height); }
 
   line-height: 1.8;
 }
+
+/* ============================================================
+   MORPH-STYLE INSTITUTION EXPANSION
+   ============================================================ */
+
+.institution-cards {
+  position: relative;
+}
+
+
+
+
+/* ------------------------------------------------------------
+   DESKTOP MORPH EFFECT
+   ------------------------------------------------------------ */
+
+
+
 
 
 /* ============================================================
@@ -3247,3 +3280,1707 @@ html { scroll-padding-top: var(--nav-height); }
 
 }
 
+/* ============================================================
+   FULLSCREEN MORPH INSTITUTION VIEW
+   ============================================================ */
+
+@media (min-width: 1025px) {
+
+  .institution-cards {
+    position: relative;
+  }
+
+  /* Normal cards */
+  .institution-card {
+    position: relative;
+    overflow: hidden;
+    transition:
+      opacity 1.2s ease,
+      transform 1.8s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 1.2s ease;
+  }
+
+
+  /* ----------------------------------------------------------
+     SELECTED CARD
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded {
+
+    position: fixed;
+
+    top: var(--nav-height);
+    left: 50%;
+
+    width: min(1180px, calc(100vw - 70px));
+
+    height: calc(100vh - var(--nav-height) - 35px);
+
+    transform:
+      translateX(-50%)
+      scale(1);
+
+    z-index: 100;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    background: var(--white);
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow:
+      0 35px 100px rgba(0,0,0,0.28);
+
+    animation:
+      institutionMorph 1.8s
+      cubic-bezier(0.16, 1, 0.3, 1)
+      both;
+  }
+
+
+  /* ----------------------------------------------------------
+     OTHER CARDS DISAPPEAR
+     ---------------------------------------------------------- */
+
+  .institution-cards.is-expanded
+  .institution-card:not(.is-expanded) {
+
+    opacity: 0;
+
+    transform:
+      scale(0.75)
+      translateY(-20px);
+
+    filter: blur(5px);
+
+    pointer-events: none;
+
+  }
+
+
+  /* ----------------------------------------------------------
+     IMAGE SIDE
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded
+  .institution-image {
+
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: 0;
+
+    overflow: hidden;
+
+    border-radius: 0;
+  }
+
+
+  .institution-card.is-expanded
+  .institution-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition:
+      transform 2s
+      cubic-bezier(0.16, 1, 0.3, 1);
+
+    transform: scale(1.05);
+  }
+
+
+  /* Beautiful image overlay */
+
+  .institution-card.is-expanded
+  .institution-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+      linear-gradient(
+        135deg,
+        rgba(10,46,31,0.10),
+        rgba(10,46,31,0.45)
+      );
+
+    pointer-events: none;
+  }
+
+
+  /* Number becomes a floating badge */
+
+  .institution-card.is-expanded
+  .institution-number {
+
+    position: absolute;
+
+    left: 30px;
+    bottom: 30px;
+
+    z-index: 3;
+
+    width: 58px;
+    height: 58px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: var(--gold);
+
+    color: var(--forest-deep);
+
+    font-size: 0.9rem;
+
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.25);
+  }
+
+
+  /* ----------------------------------------------------------
+     CONTENT SIDE
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded
+  .institution-content {
+
+    height: 100%;
+
+    padding:
+      55px 55px 35px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    background:
+      linear-gradient(
+        145deg,
+        #ffffff,
+        var(--sand)
+      );
+  }
+
+
+  .institution-card.is-expanded
+  .institution-label {
+
+    margin-bottom: 15px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 0.18em;
+  }
+
+
+  .institution-card.is-expanded
+  .institution-content h2 {
+
+    font-size:
+      clamp(2rem, 3.2vw, 3rem);
+
+    line-height: 1.12;
+
+    margin-bottom: 22px;
+
+    max-width: 500px;
+  }
+
+
+  .institution-card.is-expanded
+  .institution-content p {
+
+    font-size: 1rem;
+
+    line-height: 1.85;
+
+    max-width: 500px;
+
+    margin-bottom: 28px;
+  }
+
+
+  /* ----------------------------------------------------------
+     DETAILS
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded
+  .institution-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 25px;
+
+    margin-top: auto;
+
+    padding-top: 25px;
+
+    border-top:
+      1px solid rgba(10,46,31,0.10);
+
+    animation:
+      detailsReveal 1.2s
+      ease 0.7s
+      both;
+  }
+
+
+  .institution-contact {
+
+    color: var(--ink-soft);
+
+    font-size: 0.9rem;
+
+    line-height: 1.7;
+  }
+
+
+  .institution-contact strong {
+
+    display: block;
+
+    color: var(--forest-deep);
+
+    font-family: var(--font-display);
+
+    margin-bottom: 4px;
+  }
+
+
+  /* Buttons */
+
+  .institution-detail-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+  }
+
+
+  .prospectus-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    padding: 13px 22px;
+
+    border-radius: 999px;
+
+    background: var(--brand-green);
+
+    color: var(--white);
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+
+    transition:
+      transform 250ms ease,
+      background 250ms ease,
+      box-shadow 250ms ease;
+  }
+
+
+  .prospectus-btn:hover {
+
+    background: var(--brand-green-d);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 10px 25px
+      rgba(11,139,75,0.25);
+  }
+
+
+  .institution-close {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 12px 20px;
+
+    border-radius: 999px;
+
+    border:
+      1px solid
+      rgba(10,46,31,0.15);
+
+    background: transparent;
+
+    color: var(--forest-deep);
+
+    font-family: var(--font-body);
+
+    font-size: 0.88rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+      background 250ms ease,
+      color 250ms ease,
+      transform 250ms ease;
+  }
+
+
+  .institution-close:hover {
+
+    background: var(--forest-deep);
+
+    color: var(--white);
+
+    transform: translateY(-2px);
+  }
+
+}
+
+
+/* ============================================================
+   MORPH ENTRANCE
+   ============================================================ */
+
+@keyframes institutionMorph {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      scale(0.55);
+
+    border-radius: 50px;
+
+  }
+
+  45% {
+
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1.02);
+
+    border-radius: 30px;
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      scale(1);
+
+    border-radius: 24px;
+
+  }
+
+}
+/* ============================================================
+   INSTITUTION ADVERTISING DETAILS
+   ============================================================ */
+
+.details-header {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+.details-eyebrow {
+  display: inline-block;
+
+  color: var(--gold);
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  margin-bottom: 12px;
+}
+
+
+.details-header h3 {
+  color: var(--white);
+
+  font-family: var(--font-display);
+
+  font-size: clamp(1.8rem, 3vw, 2.7rem);
+
+  line-height: 1.15;
+
+  margin-bottom: 15px;
+}
+
+
+.details-header p {
+  max-width: 600px;
+
+  color: rgba(255,255,255,0.72);
+
+  font-size: 0.92rem;
+
+  line-height: 1.75;
+
+  margin: 0;
+}
+
+
+/* ============================================================
+   STATISTICS
+   ============================================================ */
+
+.institution-stats {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-bottom: 35px;
+}
+
+
+.stat-item {
+  position: relative;
+
+  padding: 24px 20px;
+
+  border-radius: 18px;
+
+  background:
+    rgba(255,255,255,0.055);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.12);
+
+  backdrop-filter: blur(8px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.06);
+
+  transition:
+    transform 300ms ease,
+    background 300ms ease,
+    border-color 300ms ease;
+}
+
+
+.stat-item:hover {
+  transform: translateY(-5px);
+
+  background:
+    rgba(255,255,255,0.09);
+
+  border-color:
+    rgba(201,162,39,0.35);
+}
+
+/* ICON */
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 16px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(201,162,39,0.14);
+
+  border:
+    1px solid
+    rgba(201,162,39,0.25);
+
+  color: var(--gold);
+
+  font-size: 1.2rem;
+}
+
+
+.stat-icon svg {
+
+  width: 21px;
+  height: 21px;
+
+  fill: none;
+
+  stroke: var(--gold);
+
+  stroke-width: 1.6;
+
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+
+/* NUMBER */
+
+.stat-number {
+
+  display: inline-block;
+
+  color: var(--white);
+
+  font-family: var(--font-display);
+
+  font-size: 2rem;
+
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+
+.stat-suffix {
+
+  color: var(--gold);
+
+  font-family: var(--font-display);
+
+  font-size: 1.4rem;
+
+  font-weight: 800;
+
+  margin-left: 2px;
+}
+
+
+.stat-item small {
+
+  display: block;
+
+  margin-top: 8px;
+
+  color:
+    rgba(255,255,255,0.55);
+
+  font-size: 0.72rem;
+
+  font-weight: 500;
+
+  letter-spacing: 0.04em;
+}
+
+
+/* ============================================================
+   DETAILS FOOTER
+   ============================================================ */
+
+.institution-detail-footer {
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 25px;
+
+  padding-top: 25px;
+
+  border-top:
+    1px solid
+    rgba(255,255,255,0.10);
+}
+
+
+.institution-contact-mini {
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+
+.institution-contact-mini span {
+
+  color: var(--gold);
+
+  font-size: 0.62rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+
+.institution-contact-mini strong {
+
+  color:
+    rgba(255,255,255,0.78);
+
+  font-size: 0.78rem;
+
+  font-weight: 500;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.institution-detail-footer
+.institution-detail-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  flex-shrink: 0;
+}
+
+
+.institution-detail-footer
+.prospectus-btn {
+
+  background: var(--gold);
+
+  color: var(--forest-deep);
+
+  border-radius: 999px;
+
+  padding: 12px 18px;
+
+  font-size: 0.78rem;
+
+  transition:
+    transform 250ms ease,
+    box-shadow 250ms ease;
+}
+
+
+.institution-detail-footer
+.prospectus-btn:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 25px
+    rgba(201,162,39,0.22);
+}
+
+
+.institution-detail-footer
+.institution-close {
+
+  border:
+    1px solid
+    rgba(255,255,255,0.22);
+
+  border-radius: 999px;
+
+  color: var(--white);
+
+  padding: 11px 17px;
+
+  font-size: 0.78rem;
+
+  background: transparent;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .institution-stats {
+
+    grid-template-columns:
+      1fr 1fr 1fr;
+
+    gap: 8px;
+  }
+
+
+  .stat-item {
+
+    padding: 15px 10px;
+
+    border-radius: 13px;
+  }
+
+
+  .stat-icon {
+
+    width: 35px;
+    height: 35px;
+  }
+
+
+  .stat-icon svg {
+
+    width: 18px;
+    height: 18px;
+  }
+
+
+  .stat-number {
+
+    font-size: 1.5rem;
+  }
+
+
+  .stat-suffix {
+
+    font-size: 1rem;
+  }
+
+
+  .stat-item small {
+
+    font-size: 0.62rem;
+  }
+
+
+  .institution-detail-footer {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+
+  .institution-detail-footer
+  .institution-detail-actions {
+
+    width: 100%;
+  }
+
+
+  .institution-detail-footer
+  .prospectus-btn,
+  .institution-detail-footer
+  .institution-close {
+
+    flex: 1;
+  }
+
+}
+
+
+/* ============================================================
+   INSTITUTION DETAILS — ADVERTISING SECTION
+   ============================================================ */
+
+.institution-detail-header {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+.institution-detail-header h3 {
+  margin: 10px 0 14px;
+
+  color: var(--white);
+
+  font-size: clamp(1.7rem, 3vw, 2.5rem);
+
+  line-height: 1.2;
+}
+
+.institution-detail-header p {
+  max-width: 600px;
+
+  color: var(--ink-soft);
+
+  font-size: 0.95rem;
+
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   STATISTICS
+   ============================================================ */
+
+.institution-stats {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 35px;
+}
+
+
+.stat-item {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 20px;
+
+  background: rgba(201,162,39,0.08);
+
+  border: 1px solid rgba(201,162,39,0.18);
+
+  border-radius: 16px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.stat-item:hover {
+
+  transform: translateY(-4px);
+
+  background:
+    rgba(201,162,39,0.13);
+}
+
+
+/* ICON */
+
+.stat-icon {
+
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: var(--forest-deep);
+
+  color: var(--gold);
+
+  font-size: 1.2rem;
+}
+
+
+/* NUMBER */
+
+.stat-content {
+
+  display: flex;
+
+  align-items: baseline;
+
+  flex-wrap: wrap;
+
+  column-gap: 3px;
+}
+
+
+.stat-number {
+  color: var(--white);
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(2rem, 3.5vw, 3rem);
+
+  font-weight: 800;
+
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+
+  text-shadow:
+    0 4px 20px rgba(0,0,0,0.18);
+}
+
+
+.stat-plus {
+
+  color: var(--gold);
+
+  font-size: 1.2rem;
+
+  font-weight: 800;
+}
+
+
+.stat-content p {
+
+  width: 100%;
+
+  margin-top: 6px;
+
+  color: var(--ink-soft);
+
+  font-size: 0.78rem;
+
+  line-height: 1.3;
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  .institution-stats {
+
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+  }
+
+
+  .stat-item {
+
+    padding: 16px;
+  }
+
+
+  .stat-icon {
+
+    width: 43px;
+    height: 43px;
+  }
+
+
+  .stat-number {
+
+    font-size: 1.7rem;
+  }
+
+}
+
+/* ============================================================
+   DETAILS REVEAL
+   ============================================================ */
+
+@keyframes detailsReveal {
+
+  from {
+
+    opacity: 0;
+
+    transform:
+      translateY(30px);
+
+  }
+
+  to {
+
+    opacity: 1;
+
+    transform:
+      translateY(0);
+
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE / TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .institution-details {
+    display: none;
+  }
+
+}
+/* ============================================================
+   INSTITUTION DETAILS — HIDDEN UNTIL CARD OPENS
+   ============================================================ */
+
+.institution-details {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: clamp(30px, 5vw, 65px);
+
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(201,162,39,0.14),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      var(--forest-deep),
+      #073b26
+    );
+
+  color: var(--white);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform: translateY(35px) scale(0.98);
+
+  transition:
+    opacity 0.9s cubic-bezier(.22,1,.36,1),
+    transform 1s cubic-bezier(.22,1,.36,1),
+    visibility 0.9s ease;
+
+  z-index: 5;
+
+  overflow: hidden;
+}
+
+/* Show details only when card is opened */
+
+.institution-card.is-expanded .institution-details {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform: translateY(0);
+}
+
+.institution-contact {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 30px;
+}
+
+.institution-contact strong {
+  display: block;
+  color: var(--gold);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.institution-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.prospectus-btn,
+.institution-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 13px 20px;
+
+  border-radius: 8px;
+
+  font-family: var(--font-display);
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.prospectus-btn {
+  background: var(--gold);
+  color: var(--forest-deep);
+}
+
+.institution-close {
+  background: transparent;
+  color: var(--white);
+
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+.institution-details::before {
+  content: "";
+
+  position: absolute;
+
+  width: 380px;
+  height: 380px;
+
+  border: 1px solid rgba(201,162,39,0.16);
+
+  border-radius: 50%;
+
+  right: -170px;
+  top: -170px;
+
+  pointer-events: none;
+}
+
+
+.institution-details::after {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  border: 1px solid rgba(255,255,255,0.06);
+
+  border-radius: 50%;
+
+  left: -120px;
+  bottom: -120px;
+
+  pointer-events: none;
+}
+
+/* ============================================================
+   UNIFIED INSTITUTION POPUP THEME
+   Makes all institution popups use the same Hifz-style theme
+   ============================================================ */
+
+.institution-card.is-expanded .institution-details {
+  background:
+    linear-gradient(
+      135deg,
+      var(--forest-deep),
+      #0b5032
+    );
+
+  color: var(--white);
+}
+
+
+/* Contact text */
+
+.institution-card.is-expanded .institution-contact {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* Contact heading */
+
+.institution-card.is-expanded .institution-contact strong {
+  color: var(--gold);
+}
+
+
+/* Buttons */
+
+.institution-card.is-expanded .prospectus-btn {
+  background: var(--gold);
+  color: var(--forest-deep);
+}
+
+.institution-card.is-expanded .prospectus-btn:hover {
+  background: #e0bd45;
+  color: var(--forest-deep);
+}
+
+
+/* Back button */
+
+.institution-card.is-expanded .institution-close {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255,255,255,0.28);
+}
+
+.institution-card.is-expanded .institution-close:hover {
+  background: rgba(255,255,255,0.10);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+}
+
+
+/* Statistics */
+
+.institution-card.is-expanded .stat-number {
+  color: var(--white);
+}
+
+.institution-card.is-expanded .stat-content p {
+  color: rgba(255,255,255,0.72);
+}
+
+.institution-card.is-expanded .stat-plus {
+  color: var(--gold);
+}
+
+
+/* Statistic boxes */
+
+.institution-card.is-expanded .stat-item {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+
+/* Icons */
+
+.institution-card.is-expanded .stat-icon {
+  background: rgba(201,162,39,0.16);
+  color: var(--gold);
+}
+
+
+/* Divider */
+
+.institution-card.is-expanded .institution-details {
+  border-color: rgba(255,255,255,0.12);
+}
+
+
+/* ============================================================
+   MOBILE — INSTITUTION POPUP
+   ============================================================ */
+
+@media (max-width: 768px) {
+
+  /* Expanded card fills the usable mobile screen */
+  .institution-card.is-expanded {
+
+    position: fixed;
+
+    top: var(--nav-height, 72px);
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+
+    width: auto;
+    height: auto;
+
+    min-height: 0;
+
+    z-index: 1000;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    border-radius: 22px;
+
+    transform: none !important;
+  }
+
+
+  /* ----------------------------------------------------------
+     IMAGE
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded .institution-image {
+
+    flex: 0 0 35%;
+
+    width: 100%;
+    height: auto;
+
+    min-height: 0;
+
+    position: relative;
+
+    overflow: hidden;
+  }
+
+
+  .institution-card.is-expanded .institution-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: center;
+  }
+
+
+  /* Dark overlay makes image more cinematic */
+
+  .institution-card.is-expanded .institution-image::after {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.02),
+        rgba(10,46,31,0.55)
+      );
+
+    pointer-events: none;
+  }
+
+
+  /* Number */
+
+  .institution-card.is-expanded .institution-number {
+
+    z-index: 3;
+
+    top: 18px;
+    left: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    font-size: 0.75rem;
+  }
+
+
+  /* ----------------------------------------------------------
+     MAIN CONTENT
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded .institution-content {
+
+    flex: 0 0 auto;
+
+    width: 100%;
+
+    padding: 22px 22px 10px;
+
+    text-align: left;
+
+    overflow: visible;
+  }
+
+
+  .institution-card.is-expanded .institution-label {
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.15em;
+
+    margin-bottom: 7px;
+  }
+
+
+  .institution-card.is-expanded .institution-content h2 {
+
+    font-size: 1.55rem;
+
+    line-height: 1.15;
+
+    margin-bottom: 9px;
+  }
+
+
+  .institution-card.is-expanded .institution-content p {
+
+    font-size: 0.82rem;
+
+    line-height: 1.55;
+
+    margin-bottom: 12px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+  }
+
+
+  /* Hide Know More after expansion */
+
+  .institution-card.is-expanded .institution-btn {
+
+    display: none;
+  }
+
+
+  /* ----------------------------------------------------------
+     DETAILS / STATISTICS
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded .institution-details {
+
+    flex: 1 1 auto;
+
+    width: 100%;
+
+    min-height: 0;
+
+    padding: 15px 20px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    overflow-y: auto;
+
+    border-top:
+      1px solid
+      rgba(255,255,255,0.12);
+  }
+
+
+  /* Statistics grid */
+
+  .institution-card.is-expanded .institution-stats {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 8px;
+
+    width: 100%;
+  }
+
+
+  .institution-card.is-expanded .stat-item {
+
+    min-width: 0;
+
+    padding: 11px 6px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+  }
+
+
+  .institution-card.is-expanded .stat-icon {
+
+    width: 30px;
+    height: 30px;
+
+    margin-bottom: 5px;
+
+    font-size: 0.75rem;
+  }
+
+
+  .institution-card.is-expanded .stat-number {
+
+    font-size: 1.35rem;
+
+    line-height: 1.1;
+  }
+
+
+  .institution-card.is-expanded .stat-plus {
+
+    font-size: 0.85rem;
+  }
+
+
+  .institution-card.is-expanded .stat-content p {
+
+    margin: 3px 0 0;
+
+    font-size: 0.65rem;
+
+    line-height: 1.25;
+
+    display: block;
+  }
+
+
+  /* ----------------------------------------------------------
+     CONTACT
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded .institution-contact {
+
+    margin: 12px 0 10px;
+
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+  }
+
+
+  /* ----------------------------------------------------------
+     BUTTONS
+     ---------------------------------------------------------- */
+
+  .institution-card.is-expanded
+  .institution-detail-actions {
+
+    display: grid;
+
+    grid-template-columns: 1fr 0.7fr;
+
+    gap: 9px;
+
+    width: 100%;
+  }
+
+
+  .institution-card.is-expanded
+  .prospectus-btn,
+
+  .institution-card.is-expanded
+  .institution-close {
+
+    min-height: 42px;
+
+    padding: 10px 12px;
+
+    border-radius: 10px;
+
+    font-size: 0.72rem;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+  }
+
+
+  /* ----------------------------------------------------------
+     PREVENT BACKGROUND SCROLL
+     ---------------------------------------------------------- */
+
+  body.institution-open {
+
+    overflow: hidden;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+  .institution-card.is-expanded {
+
+    top: 66px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+
+    border-radius: 18px;
+  }
+
+
+  .institution-card.is-expanded .institution-image {
+
+    flex-basis: 30%;
+  }
+
+
+  .institution-card.is-expanded .institution-content {
+
+    padding: 17px 17px 8px;
+  }
+
+
+  .institution-card.is-expanded .institution-content h2 {
+
+    font-size: 1.3rem;
+  }
+
+
+  .institution-card.is-expanded .institution-content p {
+
+    font-size: 0.76rem;
+
+    -webkit-line-clamp: 2;
+  }
+
+
+  .institution-card.is-expanded .institution-details {
+
+    padding: 10px 15px 15px;
+  }
+
+
+  .institution-card.is-expanded .institution-stats {
+
+    gap: 6px;
+  }
+
+
+  .institution-card.is-expanded .stat-item {
+
+    padding: 8px 4px;
+  }
+
+
+  .institution-card.is-expanded .stat-number {
+
+    font-size: 1.15rem;
+  }
+
+
+  .institution-card.is-expanded
+  .stat-content p {
+
+    font-size: 0.58rem;
+  }
+
+
+  .institution-card.is-expanded
+  .institution-detail-actions {
+
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
