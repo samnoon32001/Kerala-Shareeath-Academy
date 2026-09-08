@@ -4954,13 +4954,13 @@ html { scroll-padding-top: var(--nav-height); }
 
   .institution-card.is-expanded .institution-stats {
 
-    gap: 6px;
+    gap: 2px;
   }
 
 
   .institution-card.is-expanded .stat-item {
 
-    padding: 8px 4px;
+    padding: 5px 4px;
   }
 
 
